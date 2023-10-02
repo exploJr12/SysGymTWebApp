@@ -1,5 +1,4 @@
 export const environment = {
-    production: false,
-    endpoint: ""
+  production: false,
+  endpoint: 'http://www.gymtech.somee.com/api',
 };
- 
