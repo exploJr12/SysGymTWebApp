@@ -10,5 +10,6 @@ import { Rol } from '../Interfaces/rol';
   providedIn: 'root',
 })
 export class RolService {
+  private urlApi: string = environment.endpoint + 'rol/';
   constructor() {}
 }
