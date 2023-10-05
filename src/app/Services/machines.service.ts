@@ -22,7 +22,7 @@ export class MachinesService {
   }
    
   createMachine(request: Machines): Observable<ResponseApi> {
-    return this.http.post<ResponseApi>(`${this.API_URL}`,request);
+    return this.http.post<ResponseApi>(`${this.API_URL}`,request); 
   }
   //add modifie
   updateMachine(request: Machines, id: number) : Observable<ResponseApi> {
