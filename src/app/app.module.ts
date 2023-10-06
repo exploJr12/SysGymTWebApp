@@ -7,9 +7,10 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { LoginComponent } from './Components/login/login.component';
 import { LayoutComponent } from './Components/layout/layout.component';
 import { SharedModule } from './Reutilizable/shared/shared.module';
+import { ModalMachineComponent } from './Component/layout/modal/modal-machine/modal-machine.component';
 
 @NgModule({
-  declarations: [AppComponent, LoginComponent, LayoutComponent],
+  declarations: [AppComponent, LoginComponent, LayoutComponent, ModalMachineComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,

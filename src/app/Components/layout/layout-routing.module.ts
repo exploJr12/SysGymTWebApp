@@ -1,3 +1,4 @@
+import { MachineDashBoardComponent } from './pages/machine-dash-board/machine-dash-board.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { LayoutComponent } from './layout.component';
@@ -11,6 +12,7 @@ const routes: Routes = [
     children: [
       { path: 'dashboard', component: DashBoardComponent },
       { path: 'Rol', component: RolComponent },
+      { path: 'machines', component: MachineDashBoardComponent }
     ],
   },
 ];

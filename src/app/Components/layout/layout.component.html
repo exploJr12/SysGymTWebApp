@@ -10,15 +10,22 @@
 <mat-sidenav-container>
   <mat-sidenav #sidenav opened="true" mode="side" style="width: 200px">
     <mat-nav-list>
+
       <mat-list-item routerLink="/pages/dash-board">
         <mat-icon mat-list-icon>dashboard</mat-icon>
         <div mat-line>dashboard</div>
       </mat-list-item>
 
       <mat-list-item routerLink="/pages/rol">
-        <mat-icon mat-list-icon>assignment ind icon</mat-icon>
-        <div mat-line>rol</div>
+        <mat-icon mat-list-icon class="rol-icon__nav">assignment ind icon</mat-icon>
+        <div mat-line>Rol</div>
       </mat-list-item>
+
+      <mat-list-item routerLink="/pages/machines">
+        <mat-icon mat-list-icon>fitness_center</mat-icon>
+        <div mat-line class="machine-icon__nav">Maquinaria</div>
+      </mat-list-item>
+
     </mat-nav-list>
   </mat-sidenav>
   <mat-sidenav-content>

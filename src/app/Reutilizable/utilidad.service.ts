@@ -13,14 +13,17 @@ export class UtilidadService {
     this._snackBar.open(mensaje, tipo, {
       horizontalPosition: 'end',
       verticalPosition: 'top',
-      duration: 3000,
+      duration: 2500,
     });
   }
+
+  //create methods in english weon :v
+
   guardarSesionUsuario(usuarioSesion: Sesion) {
     localStorage.setItem('usuario', JSON.stringify(usuarioSesion));
   }
   obtenerSesioUsuario() {
-    const dataCadena = localStorage.getItem('usuario');
+    const dataCadena = localStorage.getItem('usuario'); //usuario = ?
 
     const usuario = JSON.parse(dataCadena!);
     return usuario;
