@@ -7,14 +7,32 @@ import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { ResponseApi } from '../Interfaces/response-api';
 import { Rol } from '../Interfaces/rol';
-//import { ResponseApi } from '../interfaces/response-api';
-//import { Rol } from '../interfaces/rol';
 
 @Injectable({
   providedIn: 'root',
 })
 export class RolService {
-  private urlApi: string = environment.endpoint + 'rol/';
+  private readonly API_URL: string = environment.endpoint + '/rol';
 
   constructor(private http: HttpClient) {}
+
+  getRolList(): Observable<ResponseApi> {
+    return this.http.get<ResponseApi>(`${this.API_URL}/rol`);
+  }
+
+  getByIdRol(id: number): Observable<ResponseApi> {
+    return this.http.get<ResponseApi>(`${this.API_URL}/${id}`);
+  }
+
+  createRol(request: Rol): Observable<ResponseApi> {
+    return this.http.post<ResponseApi>(`${this.API_URL}`, request);
+  }
+  //add modifie
+  updateRol(request: Rol, id: number): Observable<ResponseApi> {
+    return this.http.put<ResponseApi>(`${this.API_URL}/${id}`, request);
+  }
+
+  deleteRol(id: number): Observable<ResponseApi> {
+    return this.http.delete<ResponseApi>(`${this.API_URL}/${id}`);
+  }
 }
