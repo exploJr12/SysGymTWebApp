@@ -1,3 +1,5 @@
+// src/app/services/rol.service.ts
+
 import { Injectable } from '@angular/core';
 // importaciones para consumir la api
 import { HttpClient } from '@angular/common/http';
@@ -10,6 +12,27 @@ import { Rol } from '../Interfaces/rol';
   providedIn: 'root',
 })
 export class RolService {
-  private urlApi: string = environment.endpoint + 'rol/';
-  constructor() {}
+  private readonly API_URL: string = environment.endpoint + '/rol';
+
+  constructor(private http: HttpClient) {}
+
+  getRolList(): Observable<ResponseApi> {
+    return this.http.get<ResponseApi>(`${this.API_URL}/rol`);
+  }
+
+  getByIdRol(id: number): Observable<ResponseApi> {
+    return this.http.get<ResponseApi>(`${this.API_URL}/${id}`);
+  }
+
+  createRol(request: Rol): Observable<ResponseApi> {
+    return this.http.post<ResponseApi>(`${this.API_URL}`, request);
+  }
+  //add modifie
+  updateRol(request: Rol, id: number): Observable<ResponseApi> {
+    return this.http.put<ResponseApi>(`${this.API_URL}/${id}`, request);
+  }
+
+  deleteRol(id: number): Observable<ResponseApi> {
+    return this.http.delete<ResponseApi>(`${this.API_URL}/${id}`);
+  }
 }
