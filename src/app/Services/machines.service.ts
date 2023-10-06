@@ -33,3 +33,10 @@ export class MachinesService {
     return this.http.delete<ResponseApi>(`${this.API_URL}/${id}`);
   }
 }
+
+
+/* 
+  updateMachine(request: Machines, id: number) : Observable<ResponseApi> {
+    return this.http.put<ResponseApi>(`${this.API_URL}/${id}`,request);
+  }
+*/
