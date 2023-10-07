@@ -1,4 +1,7 @@
-import { Component, OnInit, Inject } from '@angular/core';
+import { Component, OnInit, Inject, AfterViewInit, ViewChild } from '@angular/core';
+//ds
+import { MatTableDataSource } from '@angular/material/table';
+import { MatPaginator } from '@angular/material/paginator';
 
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialog, MAT_DIALOG_DATA, MatDialogRef, } from '@angular/material/dialog';

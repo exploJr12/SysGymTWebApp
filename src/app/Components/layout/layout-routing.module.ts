@@ -3,7 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { LayoutComponent } from './layout.component';
 import { DashBoardComponent } from './pages/dash-board/dash-board.component';
 import { RolComponent } from './pages/rol/rol.component';
-import { ModalMachineComponent } from './pages/machines/modal-machine.component';
+import { ModalMachineComponent } from './modales/machines/modal-machine.component';
 
 const routes: Routes = [
   {
