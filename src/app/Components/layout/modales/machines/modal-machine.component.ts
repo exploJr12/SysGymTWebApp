@@ -31,15 +31,15 @@ export class ModalMachineComponent {
     ) {
         this.machineForm = this.formBuilder.group({
             Machines_Name: ['', Validators.required],
-            Brand: [],
-            Serial_Number: [],
-            Status: [],
-            Acquisition_Date: [],
-            Maintenance_Date: [],
-            Next_Maintenance_Date: [],
-            Top_Aux: [],
-            Usuario: [],
-            IdUsuario: []
+            Brand: ['', Validators.required],
+            Serial_Number: ['', Validators.required],
+            Status: ['', Validators.required],
+            Acquisition_Date: ['', Validators.required],
+            Maintenance_Date: ['', Validators.required],
+            Next_Maintenance_Date: ['', Validators.required],
+            Top_Aux: ['', Validators.required],
+            Usuario: ['', Validators.required],
+            IdUsuario: ['', Validators.required]
         });
 
         if (this.machineData != null) {

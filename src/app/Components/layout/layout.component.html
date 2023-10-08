@@ -11,7 +11,7 @@
   <mat-sidenav #sidenav opened="true" mode="side" style="width: 200px">
     <mat-nav-list>
 
-      <mat-list-item routerLink="/pages/dash-board">
+      <mat-list-item routerLink="/pages/dashboard">
         <mat-icon mat-list-icon>dashboard</mat-icon>
         <div mat-line>dashboard</div>
       </mat-list-item>
@@ -21,7 +21,7 @@
         <div mat-line>Rol</div>
       </mat-list-item>
 
-      <mat-list-item (click)="openMachineModal()">
+      <mat-list-item routerLink="/pages/machines">
         <mat-icon mat-list-icon>fitness_center</mat-icon>
         <div mat-line class="machine-icon__nav">Maquinaria</div>
       </mat-list-item>
