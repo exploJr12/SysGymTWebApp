@@ -104,4 +104,15 @@ export class MachineComponent implements OnInit, AfterViewInit {
             }
         })
     }
+
+    openMachineModal() {
+        this.matDialog.open(ModalMachineComponent, {
+            disableClose: true
+        }).afterClosed().subscribe(resultado => {
+            if (resultado === "true") {
+                this.getMachines();
+            }
+        });
+    }
+    
 }
