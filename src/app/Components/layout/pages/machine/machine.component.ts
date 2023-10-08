@@ -1,4 +1,4 @@
-import { Component, OnInit, AfterViewInit, ViewChild } from '@angular/core';
+import { Component, OnInit, AfterViewInit, ViewChild, ViewEncapsulation } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatDialog } from '@angular/material/dialog';
@@ -13,11 +13,12 @@ import { filter } from 'rxjs';
 @Component({
     selector: 'app-machine',
     templateUrl: './machine.component.html',
-    styleUrls: ['./machine.component.css']
+    styleUrls: ['./machine.component.css'],
+    encapsulation: ViewEncapsulation.None
 })
 export class MachineComponent implements OnInit, AfterViewInit {
 
-    columnTable: string[] = ['nombre', 'marca', 'Numero de serie', 'Estado', 'fecha de compra', 'Fecha de mantenimiento', 'siguiente mantenimiento', 'encargado del mantenimiento'];
+    columnTable: string[] = ['Nombre', 'Marca', 'NumeroDeSerie', 'Estado', 'fechaCompra', 'FechaMantenimiento', 'SiguienteMantenimiento', 'EncargadoMantenimiento'];
     dataStart: Machines[] = [];
     dataListMachines = new MatTableDataSource(this.dataStart);
     @ViewChild(MatPaginator) paginationTable!: MatPaginator;
@@ -114,5 +115,6 @@ export class MachineComponent implements OnInit, AfterViewInit {
             }
         });
     }
+    
     
 }
