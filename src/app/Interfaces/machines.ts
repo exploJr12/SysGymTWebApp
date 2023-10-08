@@ -1,5 +1,5 @@
 export interface Machines {
-    id_Machines: number
+  id_Machines: number
   id_Usuario: number
   machines_Name: string
   brand: string
