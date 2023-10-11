@@ -7,6 +7,7 @@ import { RolComponent } from './pages/rol/rol.component';
 import { SharedModule } from 'src/app/Reutilizable/shared/shared.module';
 import { MachineComponent } from './pages/machine/machine.component';
 import { MachinePanelComponent } from './pages/machine-panel/machine-panel.component';
+import { ModalRolComponent } from './Modales/modal-rol/modal-rol.component';
 
 @NgModule({
   declarations: [
@@ -14,6 +15,7 @@ import { MachinePanelComponent } from './pages/machine-panel/machine-panel.compo
     RolComponent,
     MachineComponent,
     MachinePanelComponent,
+    ModalRolComponent,
   ],
   imports: [CommonModule, LayoutRoutingModule, SharedModule],
 })

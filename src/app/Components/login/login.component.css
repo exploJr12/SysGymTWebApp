@@ -1,13 +1,13 @@
 .body {
   display: flex;
   justify-content: center;
-  height: 100%;
   align-items: center;
+  height: 100vh; /* Changed to viewport height */
   background-color: red;
 }
 
 .loginCard {
-  max-width: 328px !important;
+  max-width: 328px;
   margin: 2em auto;
   text-align: center;
   max-height: 600px;

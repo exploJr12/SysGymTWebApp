@@ -3,8 +3,6 @@ import { Component } from '@angular/core';
 @Component({
   selector: 'app-rol',
   templateUrl: '../rol/rol.component.html',
-  styleUrls: ['./rol.component.css']
+  styleUrls: ['./rol.component.css'],
 })
-export class RolComponent {
-
-}
+export class RolComponent {}
