@@ -1,0 +1,73 @@
+<h1 style="margin:20px 0px 0px 40px">Maquinaria</h1>
+
+<mat-card>
+    <mat-card-title>
+        <button mat-raised-button color="primary" (click)="openMachineModal()">
+            <mat-icon mat-list-icon>add</mat-icon>Nueva Maquinaria
+        </button>
+    </mat-card-title>
+    
+    <mat-divider></mat-divider>
+    
+    <mat-card-content class="dashboard-card-content">
+        
+        <mat-form-field appearance="fill">
+            <mat-label>Buscar</mat-label>
+            <input matInput (keyup)="tableFiltter($event)" #input>
+        </mat-form-field>
+        
+    </mat-card-content>
+    
+    <div class="mat-elevation-z2">
+        <table mat-table [dataSource]="dataListMachines" class="machines-table mat-elevation-z2">
+
+            <!-- Definición de encabezado (header) -->
+            <ng-container matColumnDef="Nombre">
+              <th mat-header-cell *matHeaderCellDef>Nombre</th>
+              <td mat-cell *matCellDef="let element"> {{element.Nombre}} </td>
+            </ng-container>
+          
+            <ng-container matColumnDef="Marca">
+              <th mat-header-cell *matHeaderCellDef>Marca</th>
+              <td mat-cell *matCellDef="let element"> {{element.Marca}} </td>
+            </ng-container>
+          
+            <ng-container matColumnDef="NumeroDeSerie">
+              <th mat-header-cell *matHeaderCellDef>Numero de Serie</th>
+              <td mat-cell *matCellDef="let element"> {{element.NumeroDeSerie}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="Estado">
+                <th mat-header-cell *matHeaderCellDef>Estado</th>
+                <td mat-cell *matCellDef="let element"> {{element.Estado}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="fechaCompra">
+                <th mat-header-cell *matHeaderCellDef>Fecha Compra</th>
+                <td mat-cell *matCellDef="let element"> {{element.fechaCompra}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="FechaMantenimiento">
+                <th mat-header-cell *matHeaderCellDef>Fecha deMantenimiento</th>
+                <td mat-cell *matCellDef="let element"> {{element.FechaMantenimiento}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="SiguienteMantenimiento">
+                <th mat-header-cell *matHeaderCellDef>Siguiente mantenimiento</th>
+                <td mat-cell *matCellDef="let element"> {{element.SiguienteMantenimiento}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="EncargadoMantenimiento">
+                <th mat-header-cell *matHeaderCellDef>Encargado del mantenimiento</th>
+                <td mat-cell *matCellDef="let element"> {{element.EncargadoMantenimiento}} </td>
+            </ng-container>
+            
+          
+            <!-- Define las filas (row) -->
+            <tr mat-header-row *matHeaderRowDef="columnTable"></tr>
+            <tr mat-row *matRowDef="let row; columns: columnTable;"></tr>
+          </table>
+          
+    </div>
+    
+</mat-card>

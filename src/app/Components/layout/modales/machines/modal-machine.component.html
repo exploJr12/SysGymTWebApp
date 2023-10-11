@@ -1,0 +1,102 @@
+<h2 mat-dialog-title>{{actionTitle}}</h2>
+
+<mat-dialog-content>
+
+    <form [formGroup]="machineForm">
+        <mat-grid-list cols="1" rowHeight="80">
+
+            <mat-grid-tile>
+                <mat-form-field appearance="outline">
+                    <mat-label>Nombre</mat-label>
+                    <input matInput autocomplete="off" formControlName="machines_Name">
+                    <mat-icon matSuffix>fitness_center</mat-icon>
+                </mat-form-field>
+            </mat-grid-tile>
+
+            <mat-grid-tile>
+                <mat-form-field appearance="outline">
+                    <mat-label>Marca</mat-label>
+                    <input matInput autocomplete="off" formControlName="Brand">
+                    <mat-icon matSuffix>status</mat-icon>
+                </mat-form-field>
+            </mat-grid-tile>
+
+            <mat-grid-tile>
+                <mat-form-field appearance="outline">
+                    <mat-label>Numero de Serie</mat-label>
+                    <input matInput autocomplete="off" formControlName="Serial_Number">
+                    <mat-icon matSuffix>agregar icono</mat-icon>
+                </mat-form-field>
+            </mat-grid-tile>
+
+            <mat-grid-tile>
+                <mat-form-field appearance="outline">
+                    <mat-label>Estado</mat-label>
+                    <input matInput autocomplete="off" formControlName="Status">
+                    <mat-icon matSuffix>status</mat-icon>
+                </mat-form-field>
+            </mat-grid-tile>
+
+            <mat-grid-tile>
+                <mat-form-field appearance="outline">
+                    <mat-label>Fecha de Compra</mat-label>
+                    <input matInput autocomplete="off" formControlName="Acquisition_Date">
+                    <mat-icon matSuffix>status</mat-icon>
+                </mat-form-field>
+            </mat-grid-tile>
+
+            <mat-grid-tile>
+                <mat-form-field appearance="outline">
+                    <mat-label>Fecha de Mantenimiento</mat-label>
+                    <input matInput autocomplete="off" formControlName="Maintenance_Date">
+                    <mat-icon matSuffix>status</mat-icon>
+                </mat-form-field>
+            </mat-grid-tile>
+
+            <mat-grid-tile>
+                <mat-form-field appearance="outline">
+                    <mat-label>Siguiente Mantenimiento</mat-label>
+                    <input matInput autocomplete="off" formControlName="Next_Maintenance_Date">
+                    <mat-icon matSuffix>status</mat-icon>
+                </mat-form-field>
+            </mat-grid-tile>
+
+            <mat-grid-tile>
+                <mat-form-field appearance="outline">
+                    <mat-label>Encargado del Mantenimiento</mat-label>
+                    <input matInput autocomplete="off" formControlName="IdUsuario">
+                    <mat-icon matSuffix>status</mat-icon>
+                </mat-form-field>
+            </mat-grid-tile>
+        </mat-grid-list>
+    </form>
+
+</mat-dialog-content>
+
+<mat-dialog-actions align="end">
+
+    <button mat-raised-button mat-dialog-close color="warn">Cancelar</button>
+    <button mat-raised-button color="primary" 
+    [disabled]="machineForm.invalid"
+    (click)="savePatchMachines()"
+    >{{actionButton}}</button>
+
+
+</mat-dialog-actions>
+
+
+<!--
+    <mat-grid-tile>
+        <mat-form-field appearance="outline">
+            <mat-label>desplegable</mat-label>
+
+            <mat-select formControlName="IdUsuario">
+                <mat-option *ngFor="let item of machineList" [value]="item.id_Usuario">
+                    {{item.machines_Name}}
+                </mat-option>
+            </mat-select>
+
+            <mat-icon matSuffix>agregar icono</mat-icon>
+        </mat-form-field>
+    </mat-grid-tile>
+-->
