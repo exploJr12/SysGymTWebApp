@@ -18,6 +18,7 @@ export class RolService {
 
   getRolList(): Observable<ResponseApi> {
     return this.http.get<ResponseApi>(`${this.API_URL}/rol`);
+    console.log(this.getRolList);
   }
 
   getByIdRol(id: number): Observable<ResponseApi> {

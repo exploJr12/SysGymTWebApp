@@ -16,16 +16,16 @@ export class UsuarioService {
   iniciarSesion(request: Login): Observable<ResponseApi> {
     return this.http.post<ResponseApi>(`${this.urlApi}IniciarSesion`, request);
   }
-  listaUsuario(): Observable<ResponseApi> {
-    return this.http.get<ResponseApi>(`${this.urlApi}listaUSuario`);
+  GetUsuario(): Observable<ResponseApi> {
+    return this.http.get<ResponseApi>(`${this.urlApi}GetUsuario`);
   }
-  guardarUsuario(request: Login): Observable<ResponseApi> {
-    return this.http.post<ResponseApi>(`${this.urlApi}guardarUsuario`, request);
+  PostUsuario(request: Usuario): Observable<ResponseApi> {
+    return this.http.post<ResponseApi>(`${this.urlApi}PostUsuario`, request);
   }
-  editarUsuario(request: Login): Observable<ResponseApi> {
-    return this.http.put<ResponseApi>(`${this.urlApi}editarUsuario`, request);
+  PutUsuario(request: Usuario): Observable<ResponseApi> {
+    return this.http.put<ResponseApi>(`${this.urlApi}PutUsuario`, request);
   }
-  eliminarUsuario(id: number): Observable<ResponseApi> {
-    return this.http.delete<ResponseApi>(`${this.urlApi}eliminarUsuario/${id}`);
+  DeleteUsuario(id: number): Observable<ResponseApi> {
+    return this.http.delete<ResponseApi>(`${this.urlApi}DeleteUsuario/${id}`);
   }
 }
