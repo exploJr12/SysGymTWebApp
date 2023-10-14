@@ -54,7 +54,7 @@ export class ModalMachineComponent {
 
         this._machinesService.getMachinesList().subscribe({
             next: (data) => {
-                if (data.status) this.machineList = data.value
+                if (data.statusCode) this.machineList = data.value
             },
             error: (e) => { console.error(e) }
         })
@@ -91,7 +91,7 @@ export class ModalMachineComponent {
         if (this.machineData == null) {
             this._machinesService.createMachine(_machine).subscribe({
                 next: (data) => {
-                    if (data.status) {
+                    if (data.statusCode) {
                         this.utilityService.mostrarAlerta("La maquinaria fue registrada", "Creado");
                     } else {
                         this.utilityService.mostrarAlerta("No se pudo registrar la maquinaria", "Error")
@@ -105,7 +105,7 @@ export class ModalMachineComponent {
             // add id later
             this._machinesService.updateMachine(_machine, _machine.id_Machines).subscribe({
                 next: (data) => {
-                    if (data.status) {
+                    if (data.statusCode) {
                         this.utilityService.mostrarAlerta("La maquinaria fue editada", "Hecho");
                         this.currentModal.close("true");
                     } else {

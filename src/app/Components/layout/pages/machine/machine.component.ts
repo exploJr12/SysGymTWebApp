@@ -1,56 +1,68 @@
+import { MachinesService } from './../../../../Services/machines.service';
 import { Component, OnInit, AfterViewInit, ViewChild, ViewEncapsulation } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatDialog } from '@angular/material/dialog';
-
+import { Machines, GetMachines } from 'src/app/Interfaces/machines';
 import { ModalMachineComponent } from '../../modales/machines/modal-machine.component';
-import { Machines } from 'src/app/Interfaces/machines';
-import { MachinesService } from 'src/app/Services/machines.service';
 import { UtilidadService } from 'src/app/Reutilizable/utilidad.service';
 import Swal from 'sweetalert2';
 import { filter } from 'rxjs';
+import { ResponseApi } from 'src/app/Interfaces/response-api';
+
 
 @Component({
     selector: 'app-machine',
     templateUrl: './machine.component.html',
     styleUrls: ['./machine.component.css'],
-    encapsulation: ViewEncapsulation.None
 })
-export class MachineComponent implements OnInit, AfterViewInit {
+export class MachineComponent implements OnInit {
 
     columnTable: string[] = ['Nombre', 'Marca', 'NumeroDeSerie', 'Estado', 'fechaCompra', 'FechaMantenimiento', 'SiguienteMantenimiento', 'EncargadoMantenimiento'];
     dataStart: Machines[] = [];
     dataListMachines = new MatTableDataSource(this.dataStart);
     @ViewChild(MatPaginator) paginationTable!: MatPaginator;
 
-    constructor(
-        private matDialog: MatDialog,
-        private _machineService: MachinesService,
-        private _utilityService: UtilidadService
-    ) { }
-
-    getMachines() {
-        this._machineService.getMachinesList().subscribe({
-          next: (data: { status: boolean, value: any }) => { //adding value to data
-            if (data.status) {
-              this.dataListMachines.data = data.value;
-            } else {
-              this._utilityService.mostrarAlerta("No se encontraron datos", "error");
+    machines: GetMachines = {
+        statusCode: 0,
+        message: '',
+        value: '',
+        data: [
+            {
+                id_Machines: 0,
+                id_Usuario: 0,
+                machines_Name: '',
+                brand: '',
+                serial_Number: '',
+                status: false,
+                acquisition_Date: '',
+                maintenance_Date: '',
+                next_Maintenance_Date: '',
+                usuario: null,
+                top_Aux: 0
             }
-          },
-          error: (e: Error) => {
-            console.error(e);
-          }
-        });
-      }
-      
-
-    ngOnInit(): void {
- 
+        ]
     }
 
-    ngAfterViewInit(): void {
-        this.dataListMachines.paginator = this.paginationTable;
+    constructor(
+            private machineService: MachinesService,
+            private matDialog: MatDialog,
+            private utilityService: UtilidadService
+        ) {}
+
+    ngOnInit(): void {
+        this.getMachinesList();
+    }
+
+    getMachinesList() {
+        try {
+            this.machineService.getMachinesList().subscribe( (response: GetMachines) => {
+                this.machines = response
+            })
+        } catch (e) {
+            console.error(e);
+            throw new Error
+        }
     }
 
     tableFiltter(event: Event) {
@@ -58,63 +70,66 @@ export class MachineComponent implements OnInit, AfterViewInit {
         this.dataListMachines.filter = filterValue.trim().toLocaleLowerCase();
     }
 
-    newMachine() {
-        this.matDialog.open(ModalMachineComponent, {
-            disableClose: true
-        }).afterClosed().subscribe( resultado => {
-            if (resultado === "true") {
-                this.getMachines();
-            }
-        });
-    }
-
-    updateMachine(machine: Machines) {
-        this.matDialog.open(ModalMachineComponent, {
-            disableClose: true,
-            data: machine
-        }).afterClosed().subscribe( resultado => {
-            if (resultado === "true") {
-                this.getMachines();
-            }
-        });
-    }
-
-    deleteMachine(machine: Machines) {
-        Swal.fire({
-            title: '¿Desea eliminar la maquinaria?',
-            text: machine.machines_Name,
-            icon: 'warning',
-            confirmButtonColor: '#3085d6',
-            confirmButtonText: "Eliminar",
-            showCancelButton: true,
-            cancelButtonColor: '#d33',
-            cancelButtonText: 'Volver'
-        }).then( (result) => {
-            if (result.isConfirmed) {
-                this._machineService.deleteMachine(machine.id_Machines).subscribe({
-                    next: (data) => {
-                        if (data.status) {
-                            this._utilityService.mostrarAlerta("La maquinaria fue eliminada", "Hecho");
-                        } else {
-                            this._utilityService.mostrarAlerta("La maquinaria fue eliminada", "Hecho");
-                        }
-                    }, error: (e: Error) => {
-                        console.error(e);
-                    }
-                })
-            }
-        })
-    }
-
     openMachineModal() {
-        this.matDialog.open(ModalMachineComponent, {
-            disableClose: true
-        }).afterClosed().subscribe(resultado => {
-            if (resultado === "true") {
-                this.getMachines();
-            }
-        });
+        try {
+            this.matDialog.open(ModalMachineComponent, {
+                disableClose: true
+            }).afterClosed().subscribe( result => {
+                if (result === "true") {
+                    this.getMachinesList();
+                }
+            })
+        } catch (e) {
+            console.error(e);
+            throw new Error;
+        }
     }
-    
-    
+
+    ngAfterViewInit(): void {
+        try {
+            this.dataListMachines.paginator = this.paginationTable;
+        } catch (e) {
+            console.error(e);
+            throw new Error;
+        }
+    }
+
+    newMachine() {
+        try {
+            this.matDialog.open(ModalMachineComponent, {
+                disableClose: true
+            }).afterClosed().subscribe( resultado => {
+                if (resultado === "true") {
+                    this.getMachinesList();
+                }
+            });
+        } catch (e) {
+            console.error(e);
+            throw new Error;
+        }
+    }
 }
+
+
+
+/*
+export class MachineComponent implements OnInit {
+    machines: GetMachines = {
+        statusCode: 0,
+        message: '',
+        data: [
+            {
+                id_Usuario: 0,
+                machines_Name: '',
+                brand: '',
+                serial_Number: '',
+                status: false,
+                acquisition_Date: '',
+                maintenance_Date: '',
+                next_Maintenance_Date: '',
+                usuario: null,
+                top_Aux: 0
+            }
+        ]
+    };
+*/

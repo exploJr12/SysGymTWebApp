@@ -22,44 +22,45 @@
         <table mat-table [dataSource]="dataListMachines" class="machines-table mat-elevation-z2">
 
             <!-- Definición de encabezado (header) -->
-            <ng-container matColumnDef="Nombre">
-              <th mat-header-cell *matHeaderCellDef>Nombre</th>
-              <td mat-cell *matCellDef="let element"> {{element.Nombre}} </td>
+            <ng-container *ngFor="let machine of dataListMachines.data" [matColumnDef]="machine.machines_Name">
+                <th mat-header-cell *matHeaderCellDef>{{ machine.machines_Name }}</th>
+                <td mat-cell *matCellDef="let element">{{ element[machine.machines_Name] }}</td>
+            </ng-container>
+              
+          
+            <ng-container *ngFor="let machine of dataListMachines.data" [matColumnDef]="machine.brand">
+                <th mat-header-cell *matHeaderCellDef>{{ machine.brand }}</th>
+                <td mat-cell *matCellDef="let element">{{ element[machine.brand] }}</td>
             </ng-container>
           
-            <ng-container matColumnDef="Marca">
-              <th mat-header-cell *matHeaderCellDef>Marca</th>
-              <td mat-cell *matCellDef="let element"> {{element.Marca}} </td>
-            </ng-container>
-          
-            <ng-container matColumnDef="NumeroDeSerie">
-              <th mat-header-cell *matHeaderCellDef>Numero de Serie</th>
-              <td mat-cell *matCellDef="let element"> {{element.NumeroDeSerie}} </td>
+            <ng-container *ngFor="let machine of dataListMachines.data" [matColumnDef]="machine.serial_Number">
+                <th mat-header-cell *matHeaderCellDef>{{ machine.serial_Number }}</th>
+                <td mat-cell *matCellDef="let element">{{ element[machine.serial_Number] }}</td>
             </ng-container>
 
             <ng-container matColumnDef="Estado">
                 <th mat-header-cell *matHeaderCellDef>Estado</th>
-                <td mat-cell *matCellDef="let element"> {{element.Estado}} </td>
+                <td mat-cell *matCellDef="let element"> {{element.status ? 'Activo' : 'Inactivo'}} </td>
             </ng-container>
 
             <ng-container matColumnDef="fechaCompra">
                 <th mat-header-cell *matHeaderCellDef>Fecha Compra</th>
-                <td mat-cell *matCellDef="let element"> {{element.fechaCompra}} </td>
+                <td mat-cell *matCellDef="let element"> {{element.acquisition_Date}} </td>
             </ng-container>
 
             <ng-container matColumnDef="FechaMantenimiento">
-                <th mat-header-cell *matHeaderCellDef>Fecha deMantenimiento</th>
-                <td mat-cell *matCellDef="let element"> {{element.FechaMantenimiento}} </td>
+                <th mat-header-cell *matHeaderCellDef>Fecha de Mantenimiento</th>
+                <td mat-cell *matCellDef="let element"> {{element.maintenance_Date}} </td>
             </ng-container>
 
             <ng-container matColumnDef="SiguienteMantenimiento">
                 <th mat-header-cell *matHeaderCellDef>Siguiente mantenimiento</th>
-                <td mat-cell *matCellDef="let element"> {{element.SiguienteMantenimiento}} </td>
+                <td mat-cell *matCellDef="let element"> {{element.next_Maintenance_Date}} </td>
             </ng-container>
 
             <ng-container matColumnDef="EncargadoMantenimiento">
                 <th mat-header-cell *matHeaderCellDef>Encargado del mantenimiento</th>
-                <td mat-cell *matCellDef="let element"> {{element.EncargadoMantenimiento}} </td>
+                <td mat-cell *matCellDef="let element"> {{element.usuario}} </td>
             </ng-container>
             
           
