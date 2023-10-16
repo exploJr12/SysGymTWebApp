@@ -43,19 +43,19 @@
                 <td mat-cell *matCellDef="let element"> {{element.status ? 'Activo' : 'Inactivo'}} </td>
             </ng-container>
 
-            <ng-container matColumnDef="fechaCompra">
-                <th mat-header-cell *matHeaderCellDef>Fecha Compra</th>
-                <td mat-cell *matCellDef="let element"> {{element.acquisition_Date}} </td>
+            <ng-container *ngFor="let machine of dataListMachines.data" [matColumnDef]="machine.acquisition_Date">
+                <th mat-header-cell *matHeaderCellDef>{{ machine.acquisition_Date }}</th>
+                <td mat-cell *matCellDef="let element">{{ element[machine.acquisition_Date] }}</td>
             </ng-container>
 
-            <ng-container matColumnDef="FechaMantenimiento">
-                <th mat-header-cell *matHeaderCellDef>Fecha de Mantenimiento</th>
-                <td mat-cell *matCellDef="let element"> {{element.maintenance_Date}} </td>
+            <ng-container *ngFor="let machine of dataListMachines.data" [matColumnDef]="machine.maintenance_Date">
+                <th mat-header-cell *matHeaderCellDef>{{ machine.maintenance_Date }}</th>
+                <td mat-cell *matCellDef="let element">{{ element[machine.maintenance_Date] }}</td>
             </ng-container>
 
-            <ng-container matColumnDef="SiguienteMantenimiento">
-                <th mat-header-cell *matHeaderCellDef>Siguiente mantenimiento</th>
-                <td mat-cell *matCellDef="let element"> {{element.next_Maintenance_Date}} </td>
+            <ng-container *ngFor="let machine of dataListMachines.data" [matColumnDef]="machine.next_Maintenance_Date">
+                <th mat-header-cell *matHeaderCellDef>{{ machine.next_Maintenance_Date }}</th>
+                <td mat-cell *matCellDef="let element">{{ element[machine.next_Maintenance_Date] }}</td>
             </ng-container>
 
             <ng-container matColumnDef="EncargadoMantenimiento">
